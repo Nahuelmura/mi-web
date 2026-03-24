@@ -1,21 +1,26 @@
-name: CI/CD Web
+name: CI/CD con Test
 
 on:
   push:
     branches: [ "main" ]
 
 jobs:
-  deploy:
+  test-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
     - name: Clonar repo
       uses: actions/checkout@v3
 
-    - name: Test básico
-      run: echo "Test OK"
+    - name: Instalar Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
 
-    - name: Deploy a Pages
+    - name: Ejecutar tests
+      run: node test.js
+
+    - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
