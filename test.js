@@ -6,7 +6,7 @@ function suma(a, b) {
 }
 
 // TEST 1
-if (suma(2, 2) !== 4) {
+if (suma(2, 2) !== 5) {
   throw new Error("❌ Error en suma");
 }
 
